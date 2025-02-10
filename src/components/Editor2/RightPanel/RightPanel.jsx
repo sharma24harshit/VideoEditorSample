@@ -3,11 +3,12 @@ import { Box } from '@mui/material';
 import ReactPlayer from "react-player";
 import { APIData } from '../data';
 
-const RightPanel = () => {
+const RightPanel = ({selectedStyle,textStyle}) => {
     const [video, setVideo] = useState(null);
     const fileInputRef = useRef(null);
     const [captionsArr, setCaptionsArr] = useState([]);
     const [captionText, setCaptionText] = useState("");
+
 useEffect(()=>{
     let res = []
     for(let i=0; i<APIData.length; i++){
@@ -37,6 +38,8 @@ function startTimer(dataArray) {
         setVideo(URL.createObjectURL(e.target.files[0]));
     };
 
+
+
     return (
         <Box sx={{height:"95vh"}}>
             <input type="file" ref={fileInputRef} accept="video/*" onChange={handleUpload} />
@@ -46,16 +49,16 @@ function startTimer(dataArray) {
             >
                 <ReactPlayer url={video} controls width="100%" height="100%"/>
              <Box
-             sx={{
-                position:"absolute",
-                width:"40%",
-                top:"70%",
-                left:"30%",
-                color:"white",
-                fontSize:"25px",
-                fontWeight:600,
-                textAlign:'center'
-             }}
+             sx={[
+                textStyle[selectedStyle], 
+                {
+                    position: "absolute",
+                    width: "40%",
+                    top: "70%",
+                    left: "30%",
+                    textAlign: "center"
+                }
+            ]}
              >
                 {captionText || ""}
              </Box>

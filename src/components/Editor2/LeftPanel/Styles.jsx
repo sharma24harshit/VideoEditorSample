@@ -1,8 +1,8 @@
 import { Box, Typography } from '@mui/material'
 import { useState } from 'react'
 
-const Styles = () => {
-  const [selectedStyle, setSelectedStyle] = useState(0);
+const Styles = ({selectedStyle, setSelectedStyle}) => {
+
   return (
     <Box
     sx={{

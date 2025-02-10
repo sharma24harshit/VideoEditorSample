@@ -3,13 +3,13 @@ import React, { useState } from 'react'
 import Styles from "./Styles";
 import Captions from "./Captions";
 
-const TabHeader = () => {
+const TabHeader = ({selectedStyle, setSelectedStyle}) => {
     const [selectedTab, setSelectedTab] = useState(0)
 
 const tabsBody = [
     {
         name:"Styles",
-        element : <Styles />
+        element : <Styles selectedStyle={selectedStyle} setSelectedStyle={setSelectedStyle}/>
     },
     {
         name:"Captions",
